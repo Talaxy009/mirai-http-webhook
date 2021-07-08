@@ -17,6 +17,7 @@ bot.onSignal('verified', ()=>{
 	if (config.bot.admin) {
 		bot.sendFriendMessage(messageChain, config.bot.admin);
 	}
+	console.log(`${getTime()} 通过: ${bot.sessionKey} 认证成功!\n`);
 });
 
 const server = http.createServer((req, res) => {
@@ -37,17 +38,18 @@ const server = http.createServer((req, res) => {
 		};
 	} else {
 		let messageChain = [];
-		if (text.length) {
+		if (text && text.length) {
 			messageChain.push(Plain(text));
 		}
-		if (image.length) {
+		if (image && image.length) {
 			messageChain.push(Image({url: image}));
 		}
 		bot.sendFriendMessage(messageChain, config.bot.admin);
+		console.log(`${getTime()} webhook 调用成功`);
 	}
 
-	res.writeHead(200, {'Content-Type': 'text/plain;charset=utf-8'});
-	res.end(result);
+	res.writeHead(200, {'Content-Type': 'application/json;charset=utf-8'});
+	res.end(`{err: ${result.err}, msg: "${result.msg}"}`);
 });
 
 server.listen(config.webhook.port, '0.0.0.0');
