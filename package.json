@@ -1,0 +1,29 @@
+{
+  "name": "mirai-http-webhook",
+  "version": "0.1.0",
+  "description": "通过 mirai-api-http 来实现 webhook 功能",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Talaxy009/mirai-http-webhook.git"
+  },
+  "keywords": [
+    "mirai",
+    "webhoook"
+  ],
+  "author": "Talaxy009",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Talaxy009/mirai-http-webhook/issues"
+  },
+  "homepage": "https://github.com/Talaxy009/mirai-http-webhook#readme",
+  "dependencies": {
+    "node-mirai-sdk": "^0.2.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0"
+	}
+}

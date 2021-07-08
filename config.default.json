@@ -1,0 +1,15 @@
+{
+    "mirai": {
+        "host": "http://127.0.0.1:8080",
+        "authKey": "",
+        "qq": 123456,
+        "enableWebsocket": false
+    },
+    "bot": {
+        "admin": 0
+    },
+    "webhook": {
+        "token": "abcd",
+        "port": 5050
+    }
+}
