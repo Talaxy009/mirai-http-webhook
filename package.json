@@ -24,6 +24,7 @@
     "node-mirai-sdk": "^0.2.4"
   },
   "devDependencies": {
-    "eslint": "^7.30.0"
-	}
+    "eslint": "^7.30.0",
+    "prettier": "2.3.2"
+  }
 }
