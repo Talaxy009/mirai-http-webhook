@@ -24,7 +24,6 @@
 | text   | string (非必须) | 需要发送的文字信息                                       |
 | image  | string (非必须) | 需要发送的图片的 URL                                     |
 
-
 ### 请求方式: `POST`
 
 请求头必须带有 `Content-Type` , `text/plain` 或 `application/json`
@@ -62,7 +61,6 @@ Body：`{
 | text   | string (非必须) | 需要发送的文字信息                                       |
 | image  | string (非必须) | 需要发送的图片的 URL                                     |
 
-
 ## 返回说明
 
 返回类型: `application/json;charset=utf-8`
@@ -80,4 +78,4 @@ Body：`{
 
 ## TODO 🕊
 
-- [*] ~~实现对 post 请求的处理~~
+- [x] ~~实现对 post 请求的处理~~ (感谢 [Anankkle](https://github.com/Anankke))
