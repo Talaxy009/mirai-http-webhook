@@ -14,7 +14,7 @@
 
 ## 接口调用说明
 
-请求方式: `GET`
+### 请求方式: `GET`
 
 请求示例: `http://host:port?token=abcd&text=测试&image=https://bkimg.cdn.bcebos.com/pic/6609c93d70cf3bc79f3ded3c434bada1cd11738bfc82`
 
@@ -23,6 +23,45 @@
 | token  | string (非必须) | 需要与配置文件中的 token 一致，若没有配置 token 可以不传 |
 | text   | string (非必须) | 需要发送的文字信息                                       |
 | image  | string (非必须) | 需要发送的图片的 URL                                     |
+
+
+### 请求方式: `POST`
+
+请求头必须带有 `Content-Type` , `text/plain` 或 `application/json`
+
+#### `Content-Type: text/plain`
+
+请求格式: `http://host:port?token=abcd`, Body 为 需要发送的文字信息，等价于 `GET` 方式的 `text`
+
+请求示例: `curl -H 'Content-Type: text/plain' -d '测试' -X POST http://host:port?token=abcd`
+
+| 参数名 | 类型            | 说明                                                     |
+| ------ | --------------- | -------------------------------------------------------- |
+| token  | string (非必须) | 需要与配置文件中的 token 一致，若没有配置 token 可以不传 |
+
+#### `Content-Type: application/json`
+
+请求格式: `http://host:port[?token=abcd]`
+
+Body：`{
+"token": "",
+"text": "",
+"image": ""
+}`
+
+请求示例: `curl -H 'Content-Type: application/json' -d '{ "token": "abcd", "text": "测试", "image": "https://bkimg.cdn.bcebos.com/pic/6609c93d70cf3bc79f3ded3c434bada1cd11738bfc82" }' -X POST http://host:port`
+
+请求示例: `curl -H 'Content-Type: application/json' -d '{ "text": "测试", "image": "https://bkimg.cdn.bcebos.com/pic/6609c93d70cf3bc79f3ded3c434bada1cd11738bfc82" }' -X POST http://host:port?token=abcd`
+
+| 参数名 | 类型            | 说明                                                     |
+| ------ | --------------- | -------------------------------------------------------- |
+| token  | string (非必须) | 需要与配置文件中的 token 一致，若通过 JSON 内容传递或没有配置 token 可以不传 |
+
+| JSON 项 | 类型            | 说明                                                     |
+| ------ | --------------- | -------------------------------------------------------- |
+| text   | string (非必须) | 需要发送的文字信息                                       |
+| image  | string (非必须) | 需要发送的图片的 URL                                     |
+
 
 ## 返回说明
 
@@ -41,4 +80,4 @@
 
 ## TODO 🕊
 
-- [ ] 实现对 post 请求的处理
+- [*] ~~实现对 post 请求的处理~~
