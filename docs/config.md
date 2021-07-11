@@ -11,7 +11,8 @@
         "enableWebsocket": false
     },
     "bot": {
-        "admin": 0
+        "target": 0,
+        "isGroup": false
     },
     "webhook": {
         "token": "abcd",
@@ -29,7 +30,8 @@
 
 ## bot 分支（机器人设置相关）
 
-- admin——管理员 QQ（一般为你的 QQ，机器人连接成功或 webhook 调用成功都会发送消息到此 QQ 上）
+- target——需要发送消息到的目标，可以是群或者好友（机器人连接成功或 webhook 调用成功都会发送消息到此目标）
+- isGroup——是否为群组类型
 
 ## webhook 分支
 
