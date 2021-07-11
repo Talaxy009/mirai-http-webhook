@@ -13,12 +13,24 @@ bot.onSignal('authed', () => {
 });
 
 bot.onSignal('verified', () => {
-	const messageChain = [Plain('Webhook 已启用')];
-	if (config.bot.admin) {
-		bot.sendFriendMessage(messageChain, config.bot.admin);
-	}
+	sendRawMessage('Webhook 已启用', null);
 	console.log(`${getTime()} 通过: ${bot.sessionKey} 认证成功!\n`);
 });
+
+function sendRawMessage(text, image) {
+	let messageChain = [];
+	if (text && text.length) {
+		messageChain.push(Plain(text));
+	}
+	if (image && image.length) {
+		messageChain.push(Image({url: image}));
+	}
+	if (config.bot.isGroup) {
+		bot.sendGroupMessage(messageChain, config.bot.target);
+	} else {
+		bot.sendFriendMessage(messageChain, config.bot.target);
+	}
+}
 
 const server = http.createServer((req, res) => {
 	const {searchParams} = new URL(req.url, 'http://localhost/');
@@ -62,14 +74,7 @@ const server = http.createServer((req, res) => {
 				msg: 'token',
 			};
 		} else {
-			let messageChain = [];
-			if (text && text.length) {
-				messageChain.push(Plain(text));
-			}
-			if (image && image.length) {
-				messageChain.push(Image({url: image}));
-			}
-			bot.sendFriendMessage(messageChain, config.bot.admin);
+			sendRawMessage(text, image);
 			console.log(`${getTime()} webhook 调用成功`);
 		}
 

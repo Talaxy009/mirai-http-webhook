@@ -6,7 +6,8 @@
         "enableWebsocket": false
     },
     "bot": {
-        "admin": 0
+        "target": 0,
+        "isGroup": false
     },
     "webhook": {
         "token": "abcd",
