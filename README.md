@@ -10,7 +10,8 @@
 2. 移动到本地仓库 `cd ./mirai-http-webhook`
 3. 安装依赖 `npm install` 或 `yarn`
 4. 复制一份 `config.default.json` 修改名字为 `config.json` 后对其进行编辑，设置文件相关说明在此 → [点我](./docs/config.md)
-5. 启动 `npm start`
+5. 请注意，由于所使用的 [SDK](https://github.com/project-mirai/mirai-api-http/releases/tag/v1.12.0) 限制需要使用 [1.12.0](https://github.com/project-mirai/mirai-api-http/releases/tag/v1.12.0) 版本的 mirai-api-http
+6. 启动 `npm start`
 
 ## 接口调用说明
 
