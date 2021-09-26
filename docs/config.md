@@ -6,7 +6,7 @@
 {
     "mirai": {
         "host": "http://127.0.0.1:8080",
-        "authKey": "",
+        "verifyKey": "",
         "qq": 123456,
         "enableWebsocket": false
     },
@@ -24,7 +24,7 @@
 ## mirai 分支（连接相关）
 
 - host——mirai-api-http 的地址和端口，默认是 `http://127.0.0.1:8080`
-- authKey——mirai-api-http 的 authKey（建议手动指定）
+- verifyKey——mirai-api-http 的 authKey（建议手动指定）
 - qq——当前 BOT 对应的 QQ 号
 - enableWebsocket——是否启用 Websocket（需要和 mirai-api-http 的设置一致）
 
