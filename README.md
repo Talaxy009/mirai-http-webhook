@@ -5,7 +5,7 @@
 注意：
 
 - 本项目仍在开发中，若遇到问题请提交至 issues
-- 已适配至 2.0 的 [mirai-aip-http](https://github.com/project-mirai/mirai-api-http/)，请检查 `config.json` 字段名是否与 [config.default.json](./config.default.json) 的一致
+- 已适配至 2.0 的 [mirai-api-http](https://github.com/project-mirai/mirai-api-http/)，请检查 `config.json` 字段名是否与 [config.default.json](./config.default.json) 的一致
 
 ## 使用方式
 
@@ -19,13 +19,13 @@
 
 ### 请求方式：`GET`
 
-请求示例：`http://host:port?token=abcd&text=测试&image=https://bkimg.cdn.bcebos.com/pic/6609c93d70cf3bc79f3ded3c434bada1cd11738bfc82`
+请求示例：`http://host:port?token=abcd&text=测试&image=https://nodejs.org/static/images/logo.svg`
 
-| 参数名 | 类型            | 说明                                                     |
-| ------ | --------------- | -------------------------------------------------------- |
-| token  | string (非必须) | 需要与配置文件中的 token 一致，若没有配置 token 可以不传 |
-| text   | string (非必须) | 需要发送的文字信息                                       |
-| image  | string (非必须) | 需要发送的图片的 URL                                     |
+| 参数名 | 类型            | 方式  | 说明                                                     |
+| ------ | --------------- | ----- | -------------------------------------------------------- |
+| token  | string (非必须) | query | 需要与配置文件中的 token 一致，若没有配置 token 可以不传 |
+| text   | string (非必须) | query | 需要发送的文字信息                                       |
+| image  | string (非必须) | query | 需要发送的图片的 URL                                     |
 
 ### 请求方式：`POST`
 
@@ -37,32 +37,25 @@
 
 请求示例：`curl -H 'Content-Type: text/plain' -d '测试' -X POST http://host:port?token=abcd`
 
-| 参数名 | 类型            | 说明                                                     |
-| ------ | --------------- | -------------------------------------------------------- |
-| token  | string (非必须) | 需要与配置文件中的 token 一致，若没有配置 token 可以不传 |
+| 参数名 | 类型            | 方式  | 说明                                                     |
+| ------ | --------------- | ----- | -------------------------------------------------------- |
+| token  | string (非必须) | query | 需要与配置文件中的 token 一致，若没有配置 token 可以不传 |
 
 #### `Content-Type: application/json`
 
 请求格式：`http://host:port[?token=abcd]`
 
-Body：`{
-"token": "",
-"text": "",
-"image": ""
-}`
+Body：`{ "token": "", "text": "", "image": "" }`
 
-请求示例：`curl -H 'Content-Type: application/json' -d '{ "token": "abcd", "text": "测试", "image": "https://bkimg.cdn.bcebos.com/pic/6609c93d70cf3bc79f3ded3c434bada1cd11738bfc82" }' -X POST http://host:port`
+请求示例：`curl -H 'Content-Type: application/json' -d '{ "token": "abcd", "text": "测试", "image": "https://nodejs.org/static/images/logo.svg" }' -X POST http://host:port`
 
-请求示例：`curl -H 'Content-Type: application/json' -d '{ "text": "测试", "image": "https://bkimg.cdn.bcebos.com/pic/6609c93d70cf3bc79f3ded3c434bada1cd11738bfc82" }' -X POST http://host:port?token=abcd`
+请求示例：`curl -H 'Content-Type: application/json' -d '{ "text": "测试", "image": "https://nodejs.org/static/images/logo.svg" }' -X POST http://host:port?token=abcd`
 
-| 参数名 | 类型            | 说明                                                     |
-| ------ | --------------- | -------------------------------------------------------- |
-| token  | string (非必须) | 需要与配置文件中的 token 一致，若通过 JSON 内容传递或没有配置 token 可以不传 |
-
-| JSON 项 | 类型            | 说明                                                     |
-| ------ | --------------- | -------------------------------------------------------- |
-| text   | string (非必须) | 需要发送的文字信息                                       |
-| image  | string (非必须) | 需要发送的图片的 URL                                     |
+| 参数名 | 类型            | 方式          | 说明                                                     |
+| ------ | --------------- | ------------- | -------------------------------------------------------- |
+| token  | string (非必须) | query 或 body | 需要与配置文件中的 token 一致，若没有配置 token 可以不传 |
+| text   | string (非必须) | body          | 需要发送的文字信息                                       |
+| image  | string (非必须) | body          | 需要发送的图片的 URL                                     |
 
 ## 返回说明
 
@@ -74,10 +67,12 @@ Body：`{
 {"err": 0, "msg": "success"}
 ```
 
-| err | msg     | 说明                                       |
-| --- | ------- | ------------------------------------------ |
-| 0   | success | 调用成功                                   |
-| 1   | token   | 未发送 token 或发送 token 与服务端的不匹配 |
+| err | msg                | 说明                                           |
+| --- | ------------------ | ---------------------------------------------- |
+| 0   | success            | 调用成功                                       |
+| 1   | token invalid      | 未发送 token 或发送 token 与服务端的不匹配     |
+| 2   | unsupported method | 不支持的请求方式                               |
+| 3   | server error       | 由于某种原因导致流程异常，包括但不限于传参有误 |
 
 ## TODO 🕊
 
