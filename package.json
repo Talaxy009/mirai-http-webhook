@@ -1,6 +1,6 @@
 {
   "name": "mirai-http-webhook",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "通过 mirai-api-http 来实现 webhook 功能",
   "main": "index.js",
   "scripts": {
